@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Navigation = () => {
@@ -11,7 +11,7 @@ const Navigation = () => {
     { name: 'Home', href: '#hero' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' }
+    { name: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Navigation = () => {
 
       // Update active section based on scroll position
       const sections = ['hero', 'skills', 'projects', 'contact'];
-      const current = sections.find(section => {
+      const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -29,7 +29,7 @@ const Navigation = () => {
         }
         return false;
       });
-      
+
       if (current) {
         setActiveSection(current);
       }
@@ -52,27 +52,28 @@ const Navigation = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
+        transition={{ delay: 1.4 }}
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: scrolled 
-            ? 'rgba(15, 23, 42, 0.9)' 
-            : 'transparent',
+          background: scrolled ? 'rgba(15, 23, 42, 0.9)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
           borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
           transition: 'all 0.3s ease',
-          padding: '1rem 0'
+          padding: '1rem 0',
         }}
       >
-        <div className="container">
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center'
-          }}>
+        <div className='container'>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
+          >
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -83,19 +84,22 @@ const Navigation = () => {
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                cursor: 'pointer'
+                cursor: 'pointer',
               }}
               onClick={() => scrollToSection('#hero')}
             >
-              Mohammed
+              Mo
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div style={{
-              display: 'flex',
-              gap: '2rem',
-              alignItems: 'center'
-            }} className="desktop-nav">
+            <div
+              style={{
+                display: 'flex',
+                gap: '2rem',
+                alignItems: 'center',
+              }}
+              className='desktop-nav'
+            >
               {navItems.map((item) => (
                 <motion.button
                   key={item.name}
@@ -105,20 +109,18 @@ const Navigation = () => {
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: activeSection === item.href.slice(1) 
-                      ? 'var(--accent-blue)' 
-                      : 'var(--secondary-text)',
+                    color: activeSection === item.href.slice(1) ? 'var(--accent-blue)' : 'var(--secondary-text)',
                     fontSize: '1rem',
                     fontWeight: '500',
                     cursor: 'pointer',
                     transition: 'color 0.3s ease',
-                    position: 'relative'
+                    position: 'relative',
                   }}
                 >
                   {item.name}
                   {activeSection === item.href.slice(1) && (
                     <motion.div
-                      layoutId="activeSection"
+                      layoutId='activeSection'
                       style={{
                         position: 'absolute',
                         bottom: '-5px',
@@ -126,7 +128,7 @@ const Navigation = () => {
                         right: 0,
                         height: '2px',
                         background: 'var(--accent-blue)',
-                        borderRadius: '1px'
+                        borderRadius: '1px',
                       }}
                     />
                   )}
@@ -147,7 +149,7 @@ const Navigation = () => {
                   fontSize: '0.9rem',
                   fontWeight: '600',
                   cursor: 'pointer',
-                  boxShadow: '0 10px 25px rgba(59, 130, 246, 0.3)'
+                  boxShadow: '0 10px 25px rgba(59, 130, 246, 0.3)',
                 }}
               >
                 Get In Touch
@@ -164,9 +166,9 @@ const Navigation = () => {
                 border: 'none',
                 color: 'var(--primary-text)',
                 fontSize: '1.5rem',
-                cursor: 'pointer'
+                cursor: 'pointer',
               }}
-              className="mobile-menu-btn"
+              className='mobile-menu-btn'
             >
               {isOpen ? <FaTimes /> : <FaBars />}
             </motion.button>
@@ -191,18 +193,18 @@ const Navigation = () => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          gap: '2rem'
+          gap: '2rem',
         }}
-        className="mobile-menu"
+        className='mobile-menu'
       >
         {navItems.map((item, index) => (
           <motion.button
             key={item.name}
             onClick={() => scrollToSection(item.href)}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ 
-              opacity: isOpen ? 1 : 0, 
-              y: isOpen ? 0 : 20 
+            animate={{
+              opacity: isOpen ? 1 : 0,
+              y: isOpen ? 0 : 20,
             }}
             transition={{ delay: index * 0.1 }}
             style={{
@@ -211,7 +213,7 @@ const Navigation = () => {
               color: 'var(--primary-text)',
               fontSize: '1.5rem',
               fontWeight: '500',
-              cursor: 'pointer'
+              cursor: 'pointer',
             }}
           >
             {item.name}
@@ -221,9 +223,9 @@ const Navigation = () => {
         <motion.button
           onClick={() => scrollToSection('#contact')}
           initial={{ opacity: 0, y: 20 }}
-          animate={{ 
-            opacity: isOpen ? 1 : 0, 
-            y: isOpen ? 0 : 20 
+          animate={{
+            opacity: isOpen ? 1 : 0,
+            y: isOpen ? 0 : 20,
           }}
           transition={{ delay: 0.4 }}
           style={{
@@ -235,7 +237,7 @@ const Navigation = () => {
             fontSize: '1.1rem',
             fontWeight: '600',
             cursor: 'pointer',
-            marginTop: '1rem'
+            marginTop: '1rem',
           }}
         >
           Get In Touch
