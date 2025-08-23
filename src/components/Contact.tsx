@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone, FaTwitter } from 'react-icons/fa';
+import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 
 const Contact = () => {
@@ -26,6 +26,8 @@ const Contact = () => {
       opacity: 1,
     },
   };
+
+  // TODO: send email api /api/send/portfolio
 
   return (
     <section id='contact' className='section-padding' style={{ background: 'var(--secondary-bg)' }}>
@@ -87,19 +89,19 @@ const Contact = () => {
                   {
                     icon: FaEnvelope,
                     label: 'Email',
-                    value: 'mohammed@example.com',
-                    href: 'mailto:mohammed@example.com',
+                    value: 'Mo Zaqout @ Google',
+                    href: 'mailto:mo.zaqout@gmail.com',
                   },
                   {
                     icon: FaPhone,
                     label: 'Phone',
-                    value: '+1 (555) 123-4567',
-                    href: 'tel:+15551234567',
+                    value: '+49 176 62806219',
+                    href: 'tel:+4917662806219',
                   },
                   {
                     icon: FaMapMarkerAlt,
                     label: 'Location',
-                    value: 'San Francisco, CA',
+                    value: 'Germany, Stuttgart',
                     href: '#',
                   },
                 ].map((contact) => (
@@ -172,9 +174,8 @@ const Contact = () => {
                 </h4>
                 <div style={{ display: 'flex', gap: '1rem' }}>
                   {[
-                    { icon: FaGithub, href: '#', color: '#333' },
-                    { icon: FaLinkedin, href: '#', color: '#0077b5' },
-                    { icon: FaTwitter, href: '#', color: '#1da1f2' },
+                    { icon: FaGithub, href: 'https://github.com/zaqoutm', color: '#333' },
+                    { icon: FaLinkedin, href: 'https://www.linkedin.com/in/mohammed-z-34a31b123/', color: '#0077b5' },
                   ].map((social, index) => (
                     <motion.a
                       key={index}

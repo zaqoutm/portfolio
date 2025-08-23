@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaDownload, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiArrowDown } from 'react-icons/hi';
 
 const Hero = () => {
@@ -61,11 +61,10 @@ const Hero = () => {
               style={{
                 fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
                 fontWeight: '500',
-                color: 'var(--secondary-text)',
                 marginBottom: '2rem',
               }}
             >
-              <span className='gradient-text'>Fullstack Developer</span>
+              <span style={{ color: 'var(--secondary-text)' }}>Fullstack Developer</span>
             </h2>
           </motion.div>
 
@@ -100,8 +99,8 @@ const Hero = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               style={{
-                background: 'var(--gradient-primary)',
-                border: 'none',
+                background: 'transparent',
+                border: '2px solid #fff',
                 padding: '1rem 2rem',
                 borderRadius: '50px',
                 color: 'white',
@@ -111,7 +110,6 @@ const Hero = () => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)',
               }}
             >
               <FaDownload /> Download CV
@@ -146,9 +144,9 @@ const Hero = () => {
             }}
           >
             {[
-              { icon: FaGithub, href: '#', color: '#333' },
-              { icon: FaLinkedin, href: '#', color: '#0077b5' },
-              { icon: FaTwitter, href: '#', color: '#1da1f2' },
+              { icon: FaGithub, href: 'https://github.com/zaqoutm', color: '#333' },
+              { icon: FaLinkedin, href: 'https://www.linkedin.com/in/mohammed-z-34a31b123/', color: '#0077b5' },
+              // { icon: FaTwitter, href: '#', color: '#1da1f2' },
             ].map((social, index) => (
               <motion.a
                 key={index}
