@@ -42,7 +42,7 @@ const Navigation = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'instant' });
       setIsOpen(false);
     }
   };
@@ -52,7 +52,6 @@ const Navigation = () => {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ delay: 1.4 }}
         style={{
           position: 'fixed',
           top: 0,
@@ -61,36 +60,17 @@ const Navigation = () => {
           zIndex: 1000,
           background: scrolled ? 'rgba(15, 23, 42, 0.9)' : 'transparent',
           backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-          transition: 'all 0.3s ease',
-          padding: '1rem 0',
+          padding: '21px',
+          borderBottom: '1px solid #000',
         }}
       >
         <div className='container'>
           <div
             style={{
               display: 'flex',
-              justifyContent: 'space-between',
               alignItems: 'center',
             }}
           >
-            {/* Logo */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              style={{
-                fontSize: '1.8rem',
-                fontWeight: '700',
-                background: 'var(--gradient-primary)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                cursor: 'pointer',
-              }}
-              onClick={() => scrollToSection('#hero')}
-            >
-              Mo
-            </motion.div>
-
             {/* Desktop Navigation */}
             <div
               style={{
@@ -134,26 +114,6 @@ const Navigation = () => {
                   )}
                 </motion.button>
               ))}
-
-              {/* CTA Button */}
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection('#contact')}
-                style={{
-                  background: 'var(--gradient-primary)',
-                  border: 'none',
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '25px',
-                  color: 'white',
-                  fontSize: '0.9rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  boxShadow: '0 10px 25px rgba(59, 130, 246, 0.3)',
-                }}
-              >
-                Get In Touch
-              </motion.button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -219,29 +179,6 @@ const Navigation = () => {
             {item.name}
           </motion.button>
         ))}
-
-        <motion.button
-          onClick={() => scrollToSection('#contact')}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{
-            opacity: isOpen ? 1 : 0,
-            y: isOpen ? 0 : 20,
-          }}
-          transition={{ delay: 0.4 }}
-          style={{
-            background: 'var(--gradient-primary)',
-            border: 'none',
-            padding: '1rem 2rem',
-            borderRadius: '25px',
-            color: 'white',
-            fontSize: '1.1rem',
-            fontWeight: '600',
-            cursor: 'pointer',
-            marginTop: '1rem',
-          }}
-        >
-          Get In Touch
-        </motion.button>
       </motion.div>
 
       <style>{`

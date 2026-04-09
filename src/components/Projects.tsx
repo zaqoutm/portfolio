@@ -1,11 +1,15 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
-import { FaExternalLinkAlt, FaGithub, FaLinux, FaTimes } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaFigma, FaGithub, FaJava, FaLinux, FaTrello } from 'react-icons/fa';
+import { MdLiveTv } from 'react-icons/md';
 import {
   SiAntdesign,
   SiDigitalocean,
   SiDirectus,
   SiDocker,
+  SiExpo,
+  SiIos,
+  SiLetsencrypt,
+  SiMaterialdesign,
   SiMinio,
   SiMongodb,
   SiMui,
@@ -15,8 +19,11 @@ import {
   SiNodedotjs,
   SiPostgresql,
   SiPython,
+  SiRabbitmq,
   SiReact,
+  SiSpringboot,
   SiTypescript,
+  SiVercel,
 } from 'react-icons/si';
 import { useInView } from 'react-intersection-observer';
 
@@ -26,12 +33,72 @@ const Projects = () => {
     threshold: 0.1,
   });
 
-  const [filter, setFilter] = useState('All');
-  const [selectedProject, setSelectedProject] = useState<any>(null);
-
   const projects = [
     {
-      id: 1,
+      id: Math.random(),
+      title: 'Umzuger',
+      description: 'Fullstack transportation web site',
+      longDescription: '',
+      category: 'Full Stack',
+      image: '/umzuger.png',
+      tech: [SiNextdotjs, SiAntdesign, FaGithub],
+      github: 'https://github.com/zaqoutm/umzuger',
+      live: 'https://zaqoutm.github.io/umzuger/',
+    },
+    {
+      id: Math.random(),
+      title: 'T Dental Center',
+      description: 'App for doctors, Aligners Laboratory',
+      longDescription: '',
+      category: 'Full Stack',
+      image: '/dental-center.png',
+      tech: [
+        SiReact,
+        SiNodedotjs,
+        ,
+        SiSpringboot,
+        SiNextdotjs,
+        FaJava,
+        SiMaterialdesign,
+        SiRabbitmq,
+        SiLetsencrypt,
+        SiIos,
+        FaFigma,
+        FaTrello,
+        SiPostgresql,
+        SiDigitalocean,
+        SiDocker,
+        SiNginx,
+        SiMinio,
+        FaLinux,
+      ],
+      live: 'https://www.crystalaligner.com',
+    },
+    {
+      id: Math.random(),
+      title: 'Events hub',
+      description: 'Fullstack web site, using Superbase + Nextjs',
+      longDescription:
+        'Built with Next.js and Node.js, featuring user authentication, product management, shopping cart, payment processing with Stripe, order tracking, and admin dashboard. Implemented advanced search and filtering, real-time notifications, and mobile-responsive design.',
+      category: 'Full Stack',
+      image: '/events-hub.png',
+      tech: [SiNextdotjs, SiPostgresql, SiVercel, FaGithub, MdLiveTv],
+      github: 'https://github.com/zaqoutm/events-hub',
+      live: 'https://events-hub-indol.vercel.app/',
+    },
+    {
+      id: Math.random(),
+      title: 'T Dental Center',
+      description: 'IOS App for doctors',
+      longDescription: '',
+      category: 'Full stack, Cross Platform',
+      image: '/ios.png',
+      tech: [SiReact, SiExpo, SiNodedotjs],
+      live: 'https://apps.apple.com/de/app/crystal-aligner/id6443614330?l=en-GB',
+    },
+
+    {
+      id: Math.random(),
       title: 'Aljazara news network.',
       description: 'Fullstack News web site + Directus',
       longDescription:
@@ -55,7 +122,7 @@ const Projects = () => {
       features: ['User Authentication', 'Admin Dashboard', 'Real-time Updates'],
     },
     {
-      id: 2,
+      id: Math.random(),
       title: 'E-Commerce Platform',
       description: 'Full-stack e-commerce solution with modern payment integration',
       longDescription:
@@ -66,7 +133,7 @@ const Projects = () => {
       features: ['User Authentication', 'Payment Integration', 'Admin Dashboard', 'Real-time Updates'],
     },
     {
-      id: 3,
+      id: Math.random(),
       title: 'Task Management App',
       description: 'Collaborative project management tool with real-time updates',
       longDescription:
@@ -77,7 +144,7 @@ const Projects = () => {
       features: ['Real-time Collaboration', 'Drag & Drop', 'Team Management', 'Progress Tracking'],
     },
     {
-      id: 4,
+      id: Math.random(),
       title: 'AI Chat Application',
       description: 'Intelligent chatbot with natural language processing',
       longDescription:
@@ -88,7 +155,7 @@ const Projects = () => {
       features: ['AI Integration', 'Real-time Chat', 'Context Awareness', 'Analytics Dashboard'],
     },
     {
-      id: 5,
+      id: Math.random(),
       title: 'Weather Dashboard',
       description: 'Beautiful weather app with location-based forecasts',
       longDescription:
@@ -100,7 +167,7 @@ const Projects = () => {
       features: ['Location-based', 'Interactive Maps', 'Weather Alerts', 'Historical Data'],
     },
     {
-      id: 6,
+      id: Math.random(),
       title: 'Social Media API',
       description: 'RESTful API for social media platform with advanced features',
       longDescription:
@@ -111,7 +178,7 @@ const Projects = () => {
       features: ['RESTful API', 'Real-time Notifications', 'Content Moderation', 'Analytics'],
     },
     {
-      id: 7,
+      id: Math.random(),
       title: 'Portfolio Website',
       description: 'Modern, animated portfolio with dynamic content',
       longDescription:
@@ -122,9 +189,6 @@ const Projects = () => {
       features: ['Responsive Design', 'Smooth Animations', 'Contact Integration', 'Blog System'],
     },
   ];
-
-  const categories = ['All', 'Full Stack', 'Frontend', 'Backend'];
-  const filteredProjects = filter === 'All' ? projects : projects.filter((project) => project.category === filter);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -180,38 +244,6 @@ const Projects = () => {
             >
               Showcasing my latest work in fullstack development and creative problem solving
             </p>
-
-            {/* Filter Buttons */}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '1rem',
-                flexWrap: 'wrap',
-              }}
-            >
-              {categories.map((category) => (
-                <motion.button
-                  key={category}
-                  onClick={() => setFilter(category)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  style={{
-                    background: filter === category ? 'var(--gradient-primary)' : 'transparent',
-                    border: '2px solid var(--accent-blue)',
-                    padding: '0.5rem 1.5rem',
-                    borderRadius: '25px',
-                    color: filter === category ? 'white' : 'var(--accent-blue)',
-                    fontSize: '0.9rem',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                  }}
-                >
-                  {category}
-                </motion.button>
-              ))}
-            </div>
           </motion.div>
 
           {/* Projects Grid */}
@@ -224,7 +256,8 @@ const Projects = () => {
             }}
           >
             <AnimatePresence>
-              {filteredProjects.map((project) => (
+              {/* projects list */}
+              {projects.map((project) => (
                 <motion.div
                   key={project.id}
                   layout
@@ -232,16 +265,14 @@ const Projects = () => {
                   initial='hidden'
                   animate='visible'
                   exit='hidden'
-                  whileHover={{ y: -10 }}
+                  whileHover={{ scale: 1.05 }}
                   style={{
                     background: 'var(--glass-bg)',
                     backdropFilter: 'blur(20px)',
                     border: '1px solid var(--glass-border)',
-                    borderRadius: '20px',
                     overflow: 'hidden',
                     cursor: 'pointer',
                   }}
-                  onClick={() => setSelectedProject(project)}
                 >
                   {/* Project Image */}
                   <div
@@ -249,7 +280,7 @@ const Projects = () => {
                       height: '200px',
                       backgroundImage: `url(${project.image})`,
                       backgroundSize: 'cover',
-                      backgroundPosition: 'center',
+                      backgroundPosition: 'top',
                       position: 'relative',
                     }}
                   >
@@ -332,7 +363,7 @@ const Projects = () => {
                           key={index}
                           style={{
                             fontSize: '1.5rem',
-                            color: 'var(--accent-blue)',
+                            color: 'var(--accent-green)',
                             transition: 'transform 0.3s ease',
                           }}
                         />
@@ -344,10 +375,14 @@ const Projects = () => {
                       style={{
                         display: 'flex',
                         gap: '1rem',
+                        borderTop: project.github || project.live ? '1px solid #000' : '0',
+                        paddingTop: 21,
                       }}
                     >
                       {project.github && (
                         <motion.a
+                          href={project.github}
+                          target='_blank'
                           whileHover={{ scale: 1.1 }}
                           style={{
                             color: 'var(--secondary-text)',
@@ -368,8 +403,8 @@ const Projects = () => {
                             fontSize: '1.2rem',
                             transition: 'color 0.3s ease',
                           }}
-                          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-green)')}
-                          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--secondary-text)')}
+                          href={project.live}
+                          target='_blank'
                         >
                           <FaExternalLinkAlt />
                         </motion.a>
@@ -382,214 +417,6 @@ const Projects = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Project Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(0,0,0,0.8)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 1000,
-              padding: '2rem',
-            }}
-            onClick={() => setSelectedProject(null)}
-          >
-            <motion.div
-              variants={modalVariants}
-              initial='hidden'
-              animate='visible'
-              exit='exit'
-              style={{
-                background: 'var(--secondary-bg)',
-                borderRadius: '20px',
-                maxWidth: '800px',
-                width: '100%',
-                maxHeight: '90vh',
-                overflow: 'auto',
-                position: 'relative',
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedProject(null)}
-                style={{
-                  position: 'absolute',
-                  top: '1rem',
-                  right: '1rem',
-                  background: 'none',
-                  border: 'none',
-                  color: 'var(--primary-text)',
-                  fontSize: '1.5rem',
-                  cursor: 'pointer',
-                  zIndex: 1001,
-                }}
-              >
-                <FaTimes />
-              </button>
-
-              {/* Modal Content */}
-              <div>
-                <div
-                  style={{
-                    height: '300px',
-                    backgroundImage: `url(${selectedProject.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    borderRadius: '20px 20px 0 0',
-                  }}
-                />
-
-                <div style={{ padding: '2rem' }}>
-                  <h3
-                    style={{
-                      fontSize: '2rem',
-                      fontWeight: '700',
-                      marginBottom: '1rem',
-                      background: 'var(--gradient-primary)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }}
-                  >
-                    {selectedProject.title}
-                  </h3>
-
-                  <p
-                    style={{
-                      color: 'var(--secondary-text)',
-                      marginBottom: '2rem',
-                      lineHeight: '1.7',
-                    }}
-                  >
-                    {selectedProject.longDescription}
-                  </p>
-
-                  {/* Features */}
-                  <h4 style={{ marginBottom: '1rem', color: 'var(--primary-text)' }}>Key Features</h4>
-                  <div
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                      gap: '1rem',
-                      marginBottom: '2rem',
-                    }}
-                  >
-                    {selectedProject.features.map((feature: string, index: number) => (
-                      <div
-                        key={index}
-                        style={{
-                          background: 'var(--glass-bg)',
-                          padding: '0.75rem 1rem',
-                          borderRadius: '10px',
-                          border: '1px solid var(--glass-border)',
-                        }}
-                      >
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Tech Stack */}
-                  <h4 style={{ marginBottom: '1rem', color: 'var(--primary-text)' }}>Technologies Used</h4>
-                  <div
-                    style={{
-                      display: 'flex',
-                      gap: '1rem',
-                      marginBottom: '2rem',
-                      flexWrap: 'wrap',
-                    }}
-                  >
-                    {selectedProject.tech.map((TechIcon: any, index: number) => (
-                      <TechIcon
-                        key={index}
-                        style={{
-                          fontSize: '2rem',
-                          color: 'var(--accent-blue)',
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div
-                    style={{
-                      display: 'flex',
-                      gap: '1rem',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    {selectedProject.github && (
-                      <motion.a
-                        target='_blank'
-                        href={selectedProject.github}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        style={{
-                          background: 'var(--accent-blue)',
-                          color: 'white',
-                          padding: '1rem 2rem',
-                          borderRadius: '10px',
-                          textDecoration: 'none',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.5rem',
-                          fontWeight: '600',
-                        }}
-                      >
-                        <FaGithub /> View Code
-                      </motion.a>
-                    )}
-
-                    {selectedProject.live && (
-                      <motion.a
-                        target='_blank'
-                        href={selectedProject.live}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        style={{
-                          background: 'var(--accent-green)',
-                          color: 'white',
-                          padding: '1rem 2rem',
-                          borderRadius: '10px',
-                          textDecoration: 'none',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.5rem',
-                          fontWeight: '600',
-                        }}
-                      >
-                        <FaExternalLinkAlt /> Live Demo
-                      </motion.a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <style>{`
-        .project-overlay {
-          transition: opacity 0.3s ease;
-        }
-        
-        .project-overlay:hover {
-          opacity: 1 !important;
-        }
-      `}</style>
     </section>
   );
 };

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
+import ContactFormTally from './contactform';
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -178,6 +179,7 @@ const Contact = () => {
                     { icon: FaLinkedin, href: 'https://www.linkedin.com/in/mohammed-z-34a31b123/', color: '#0077b5' },
                   ].map((social, index) => (
                     <motion.a
+                      target='_blank'
                       key={index}
                       href={social.href}
                       whileHover={{ scale: 1.2, y: -3 }}
@@ -209,186 +211,7 @@ const Contact = () => {
 
             {/* Contact Form */}
             <motion.div variants={itemVariants}>
-              <form
-                style={{
-                  background: 'var(--glass-bg)',
-                  backdropFilter: 'blur(20px)',
-                  border: '1px solid var(--glass-border)',
-                  borderRadius: '20px',
-                  padding: '2.5rem',
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: '1.8rem',
-                    fontWeight: '600',
-                    marginBottom: '2rem',
-                    color: 'var(--primary-text)',
-                  }}
-                >
-                  Send Message
-                </h3>
-
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1.5rem',
-                  }}
-                >
-                  {/* Name Input */}
-                  <div>
-                    <label
-                      style={{
-                        display: 'block',
-                        marginBottom: '0.5rem',
-                        color: 'var(--secondary-text)',
-                        fontSize: '0.9rem',
-                        fontWeight: '500',
-                      }}
-                    >
-                      Name
-                    </label>
-                    <input
-                      type='text'
-                      required
-                      style={{
-                        width: '100%',
-                        padding: '1rem',
-                        background: 'var(--primary-bg)',
-                        border: '1px solid var(--glass-border)',
-                        borderRadius: '10px',
-                        color: 'var(--primary-text)',
-                        fontSize: '1rem',
-                        outline: 'none',
-                        transition: 'border-color 0.3s ease',
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = 'var(--accent-blue)')}
-                      onBlur={(e) => (e.target.style.borderColor = 'var(--glass-border)')}
-                    />
-                  </div>
-
-                  {/* Email Input */}
-                  <div>
-                    <label
-                      style={{
-                        display: 'block',
-                        marginBottom: '0.5rem',
-                        color: 'var(--secondary-text)',
-                        fontSize: '0.9rem',
-                        fontWeight: '500',
-                      }}
-                    >
-                      Email
-                    </label>
-                    <input
-                      type='email'
-                      required
-                      style={{
-                        width: '100%',
-                        padding: '1rem',
-                        background: 'var(--primary-bg)',
-                        border: '1px solid var(--glass-border)',
-                        borderRadius: '10px',
-                        color: 'var(--primary-text)',
-                        fontSize: '1rem',
-                        outline: 'none',
-                        transition: 'border-color 0.3s ease',
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = 'var(--accent-blue)')}
-                      onBlur={(e) => (e.target.style.borderColor = 'var(--glass-border)')}
-                    />
-                  </div>
-
-                  {/* Subject Input */}
-                  <div>
-                    <label
-                      style={{
-                        display: 'block',
-                        marginBottom: '0.5rem',
-                        color: 'var(--secondary-text)',
-                        fontSize: '0.9rem',
-                        fontWeight: '500',
-                      }}
-                    >
-                      Subject
-                    </label>
-                    <input
-                      type='text'
-                      required
-                      style={{
-                        width: '100%',
-                        padding: '1rem',
-                        background: 'var(--primary-bg)',
-                        border: '1px solid var(--glass-border)',
-                        borderRadius: '10px',
-                        color: 'var(--primary-text)',
-                        fontSize: '1rem',
-                        outline: 'none',
-                        transition: 'border-color 0.3s ease',
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = 'var(--accent-blue)')}
-                      onBlur={(e) => (e.target.style.borderColor = 'var(--glass-border)')}
-                    />
-                  </div>
-
-                  {/* Message Textarea */}
-                  <div>
-                    <label
-                      style={{
-                        display: 'block',
-                        marginBottom: '0.5rem',
-                        color: 'var(--secondary-text)',
-                        fontSize: '0.9rem',
-                        fontWeight: '500',
-                      }}
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      rows={5}
-                      required
-                      style={{
-                        width: '100%',
-                        padding: '1rem',
-                        background: 'var(--primary-bg)',
-                        border: '1px solid var(--glass-border)',
-                        borderRadius: '10px',
-                        color: 'var(--primary-text)',
-                        fontSize: '1rem',
-                        outline: 'none',
-                        transition: 'border-color 0.3s ease',
-                        resize: 'vertical',
-                        minHeight: '120px',
-                      }}
-                      onFocus={(e) => (e.target.style.borderColor = 'var(--accent-blue)')}
-                      onBlur={(e) => (e.target.style.borderColor = 'var(--glass-border)')}
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <motion.button
-                    type='submit'
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    style={{
-                      width: '100%',
-                      padding: '1rem 2rem',
-                      background: 'var(--gradient-primary)',
-                      border: 'none',
-                      borderRadius: '10px',
-                      color: 'white',
-                      fontSize: '1.1rem',
-                      fontWeight: '600',
-                      cursor: 'pointer',
-                      marginTop: '1rem',
-                      boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)',
-                    }}
-                  >
-                    Send Message
-                  </motion.button>
-                </div>
-              </form>
+              <ContactFormTally />
             </motion.div>
           </div>
         </motion.div>

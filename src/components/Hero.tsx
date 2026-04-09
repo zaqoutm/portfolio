@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { HiArrowDown } from 'react-icons/hi';
 
 const Hero = () => {
@@ -42,13 +42,13 @@ const Hero = () => {
             <h1
               style={{
                 marginTop: 54,
-                fontSize: 'clamp(3rem, 8vw, 6rem)',
                 fontWeight: '700',
                 marginBottom: '1rem',
                 background: 'var(--gradient-primary)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
+                borderBottom: '1px solid',
               }}
             >
               Mohammed
@@ -111,26 +111,29 @@ const Hero = () => {
                 alignItems: 'center',
                 gap: '0.5rem',
               }}
+              onClick={() => document.getElementById('projects')?.scrollIntoView()}
             >
-              <FaDownload /> Download CV
+              View Projects
             </motion.button>
-
             <motion.button
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               style={{
                 background: 'transparent',
-                border: '2px solid var(--accent-blue)',
+                border: '2px solid #fff',
                 padding: '1rem 2rem',
                 borderRadius: '50px',
-                color: 'var(--accent-blue)',
+                color: 'white',
                 fontSize: '1.1rem',
                 fontWeight: '600',
                 cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
               }}
-              onClick={() => document.getElementById('projects')?.scrollIntoView()}
+              onClick={() => document.getElementById('contact')?.scrollIntoView()}
             >
-              View Projects
+              Get in Touch
             </motion.button>
           </motion.div>
 

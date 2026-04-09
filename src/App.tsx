@@ -29,7 +29,7 @@ function App() {
               fontSize: '0.9rem',
             }}
           >
-            © 2024 Mohammed. Built with React, TypeScript & Framer Motion.
+            © 2026 Mohammed. Built with React, TypeScript & Framer Motion.
           </p>
         </div>
       </footer>

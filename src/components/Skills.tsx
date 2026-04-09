@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion';
-import { FaDigitalOcean, FaDocker, FaFigma, FaGitAlt, FaJs, FaNodeJs, FaReact } from 'react-icons/fa';
-import { MdAnimation } from 'react-icons/md';
+import { FaDigitalOcean, FaDocker, FaFigma, FaGitAlt, FaNodeJs, FaReact } from 'react-icons/fa';
+import { MdElectricBolt } from 'react-icons/md';
 import {
-  SiAmazonapigateway,
   SiAuth0,
   SiMinio,
   SiMui,
@@ -12,6 +11,7 @@ import {
   SiRabbitmq,
   SiSpringboot,
   SiTypescript,
+  SiZapier,
 } from 'react-icons/si';
 import { useInView } from 'react-intersection-observer';
 
@@ -22,7 +22,7 @@ const Skills = () => {
   });
 
   const skills = [
-    { name: 'React/Next.js, webpack/Vite', level: 75, icon: FaReact, color: '#61dafb' },
+    { name: 'React', level: 75, icon: FaReact, color: '#61dafb' },
     { name: 'TypeScript', level: 90, icon: SiTypescript, color: '#3178c6' },
     { name: 'Node.js', level: 88, icon: FaNodeJs, color: '#339933' },
     { name: 'PostgreSQL', level: 83, icon: SiPostgresql, color: '#336791' },
@@ -31,24 +31,21 @@ const Skills = () => {
   ];
 
   const technologies = [
-    { icon: FaNodeJs, name: 'Node.js', color: '#339933' },
-    { icon: FaReact, name: 'React', color: '#61dafb' },
-    { icon: SiSpringboot, name: 'Spring.Boot', color: '#22a202ff' },
-    { icon: SiPostgresql, name: 'PostgreSQL', color: '#336791' },
-    { icon: SiAmazonapigateway, name: 'REST', color: '#ffffffff' },
-    { icon: SiNextdotjs, name: 'Next.js', color: '#000000ff' },
-    { icon: MdAnimation, name: 'GSAP', color: '#1a8d25ff' },
+    { icon: MdElectricBolt, name: 'Superbase', color: '#ffffff' },
+    { icon: FaReact, name: 'React', color: '#20cfff' },
+    { icon: SiNextdotjs, name: 'Next.js', color: 'rgb(255, 255, 255)' },
     { icon: SiTypescript, name: 'TypeScript', color: '#3178c6' },
-    { icon: FaJs, name: 'JavaScript', color: '#f7df1e' },
+    { icon: SiSpringboot, name: 'Spring.Boot', color: '#22a202ff' },
+    { icon: SiPostgresql, name: 'PostgreSQL', color: '#ffffff' },
     { icon: SiNginx, name: 'nginx', color: '#098e37ff' },
     { icon: FaDocker, name: 'Docker', color: '#2496ed' },
     { icon: FaDigitalOcean, name: 'Digital', color: '#2600ffff' },
     { icon: SiMinio, name: 'MinIO', color: '#9b0532ff' },
     { icon: FaFigma, name: 'Figma', color: '#ff0048ff' },
-    { icon: FaGitAlt, name: 'Git', color: '#ff7700ff' },
-    { icon: SiRabbitmq, name: 'Git', color: '#ffa51ffc' },
-    { icon: SiAuth0, name: 'OAuth.2', color: '#1b1b1bfc' },
+    { icon: SiRabbitmq, name: 'RabbitMQ', color: '#ffa51ffc' },
+    { icon: SiAuth0, name: 'OAuth.2', color: '#fffffffc' },
     { icon: SiMui, name: 'MUI', color: '#005efffc' },
+    { icon: SiZapier, name: 'Zapier', color: '#ffb575' },
   ];
 
   const containerVariants = {
@@ -254,8 +251,8 @@ const Skills = () => {
             }}
           >
             {[
-              { number: '50+', label: 'Projects Completed' },
-              { number: '3+', label: 'Years Experience' },
+              { number: '5+', label: 'Years Experience' },
+              { number: '30+', label: 'Projects Completed' },
               { number: '20+', label: 'Technologies' },
               { number: '100%', label: 'Client Satisfaction' },
             ].map((stat) => (
