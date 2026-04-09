@@ -209,16 +209,6 @@ const Projects = () => {
     },
   };
 
-  const modalVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { type: 'spring', stiffness: 300, damping: 25 },
-    },
-    exit: { opacity: 0, scale: 0.8 },
-  };
-
   return (
     <section id='projects' className='section-padding'>
       <div className='container'>
@@ -358,7 +348,7 @@ const Projects = () => {
                         marginBottom: '1.5rem',
                       }}
                     >
-                      {project.tech.map((TechIcon, index) => (
+                      {project.tech.map((TechIcon: any, index) => (
                         <TechIcon
                           key={index}
                           style={{
