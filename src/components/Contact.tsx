@@ -31,7 +31,11 @@ const Contact = () => {
   // TODO: send email api /api/send/portfolio
 
   return (
-    <section id='contact' className='section-padding' style={{ background: 'var(--secondary-bg)' }}>
+    <section
+      id='contact'
+      className='section-padding'
+      style={{ background: 'var(--secondary-bg)', overflowX: 'hidden' }}
+    >
       <div className='container'>
         <motion.div ref={ref} variants={containerVariants} initial='hidden' animate={inView ? 'visible' : 'hidden'}>
           {/* Section Header */}
@@ -61,7 +65,7 @@ const Contact = () => {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
               gap: '4rem',
               alignItems: 'start',
             }}
@@ -108,7 +112,6 @@ const Contact = () => {
                 ].map((contact) => (
                   <motion.div
                     key={contact.label}
-                    whileHover={{ x: 10 }}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -116,8 +119,6 @@ const Contact = () => {
                       padding: '1.5rem',
                       background: 'var(--glass-bg)',
                       backdropFilter: 'blur(20px)',
-                      border: '1px solid var(--glass-border)',
-                      borderRadius: '15px',
                       cursor: contact.href !== '#' ? 'pointer' : 'default',
                     }}
                     onClick={() => contact.href !== '#' && window.open(contact.href)}
@@ -210,7 +211,12 @@ const Contact = () => {
             </motion.div>
 
             {/* Contact Form */}
-            <motion.div variants={itemVariants}>
+            <motion.div
+              variants={itemVariants}
+              style={{
+                background: 'var(--glass-bg)',
+              }}
+            >
               <ContactFormTally />
             </motion.div>
           </div>

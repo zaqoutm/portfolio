@@ -8,8 +8,8 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
+        delayChildren: 0.1,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -38,34 +38,26 @@ const Hero = () => {
           }}
         >
           {/* Main Heading */}
+
+          {/* Subtitle with typing animation */}
           <motion.div variants={itemVariants}>
             <h1
               style={{
-                marginTop: 54,
-                fontWeight: '700',
+                marginTop: 96,
+                fontWeight: '800',
                 marginBottom: '1rem',
                 background: 'var(--gradient-primary)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                borderBottom: '1px solid',
+                fontSize: 'clamp(1rem, 6vw, 12rem)',
+                backdropFilter: 'blur(20px)',
+                borderBottom: '1px solid var(--glass-border)',
               }}
             >
-              Mohammed
+              Mohammed Zaqout
             </h1>
-          </motion.div>
-
-          {/* Subtitle with typing animation */}
-          <motion.div variants={itemVariants}>
-            <h2
-              style={{
-                fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-                fontWeight: '500',
-                marginBottom: '2rem',
-              }}
-            >
-              <span style={{ color: 'var(--secondary-text)' }}>Fullstack Developer</span>
-            </h2>
+            <p style={{ color: 'var(--secondary-text)' }}>Fullstack web Developer</p>
           </motion.div>
 
           {/* Description */}
@@ -111,7 +103,7 @@ const Hero = () => {
                 alignItems: 'center',
                 gap: '0.5rem',
               }}
-              onClick={() => document.getElementById('projects')?.scrollIntoView()}
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'instant' })}
             >
               View Projects
             </motion.button>
@@ -131,7 +123,7 @@ const Hero = () => {
                 alignItems: 'center',
                 gap: '0.5rem',
               }}
-              onClick={() => document.getElementById('contact')?.scrollIntoView()}
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'instant' })}
             >
               Get in Touch
             </motion.button>
@@ -153,6 +145,7 @@ const Hero = () => {
             ].map((social, index) => (
               <motion.a
                 key={index}
+                target='_blank'
                 href={social.href}
                 whileHover={{ scale: 1.2, y: -3 }}
                 whileTap={{ scale: 0.9 }}

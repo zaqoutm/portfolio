@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaExternalLinkAlt, FaFigma, FaGithub, FaJava, FaLinux, FaTrello } from 'react-icons/fa';
 import { MdLiveTv } from 'react-icons/md';
 import {
@@ -40,7 +40,7 @@ const Projects = () => {
       description: 'Fullstack transportation web site',
       longDescription: '',
       category: 'Full Stack',
-      image: '/umzuger.png',
+      image: 'umzuger.png',
       tech: [SiNextdotjs, SiAntdesign, FaGithub],
       github: 'https://github.com/zaqoutm/umzuger',
       live: 'https://zaqoutm.github.io/umzuger/',
@@ -51,7 +51,7 @@ const Projects = () => {
       description: 'App for doctors, Aligners Laboratory',
       longDescription: '',
       category: 'Full Stack',
-      image: '/dental-center.png',
+      image: 'dental-center.png',
       tech: [
         SiReact,
         SiNodedotjs,
@@ -81,7 +81,7 @@ const Projects = () => {
       longDescription:
         'Built with Next.js and Node.js, featuring user authentication, product management, shopping cart, payment processing with Stripe, order tracking, and admin dashboard. Implemented advanced search and filtering, real-time notifications, and mobile-responsive design.',
       category: 'Full Stack',
-      image: '/events-hub.png',
+      image: 'events-hub.png',
       tech: [SiNextdotjs, SiPostgresql, SiVercel, FaGithub, MdLiveTv],
       github: 'https://github.com/zaqoutm/events-hub',
       live: 'https://events-hub-indol.vercel.app/',
@@ -92,7 +92,7 @@ const Projects = () => {
       description: 'IOS App for doctors',
       longDescription: '',
       category: 'Full stack, Cross Platform',
-      image: '/ios.png',
+      image: 'ios.png',
       tech: [SiReact, SiExpo, SiNodedotjs],
       live: 'https://apps.apple.com/de/app/crystal-aligner/id6443614330?l=en-GB',
     },
@@ -104,7 +104,7 @@ const Projects = () => {
       longDescription:
         'Built with Next.js and Node.js, featuring user authentication, product management, shopping cart, payment processing with Stripe, order tracking, and admin dashboard. Implemented advanced search and filtering, real-time notifications, and mobile-responsive design.',
       category: 'Full Stack',
-      image: '/aljazara.png',
+      image: 'aljazara.png',
       tech: [
         SiReact,
         SiNodedotjs,
@@ -195,7 +195,6 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.3,
         staggerChildren: 0.1,
       },
     },
@@ -245,165 +244,163 @@ const Projects = () => {
               gap: '2rem',
             }}
           >
-            <AnimatePresence>
-              {/* projects list */}
-              {projects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  variants={itemVariants}
-                  initial='hidden'
-                  animate='visible'
-                  exit='hidden'
-                  whileHover={{ scale: 1.05 }}
+            {/* projects list */}
+            {projects.map((project) => (
+              <motion.div
+                key={project.id}
+                layout
+                variants={itemVariants}
+                initial='hidden'
+                animate='visible'
+                exit='hidden'
+                whileHover={{ scale: 1.05 }}
+                style={{
+                  background: 'var(--glass-bg)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid var(--glass-border)',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                }}
+              >
+                {/* Project Image */}
+                <div
                   style={{
-                    background: 'var(--glass-bg)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid var(--glass-border)',
-                    overflow: 'hidden',
-                    cursor: 'pointer',
+                    height: '200px',
+                    backgroundImage: `url(${project.image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'top',
+                    position: 'relative',
                   }}
                 >
-                  {/* Project Image */}
                   <div
                     style={{
-                      height: '200px',
-                      backgroundImage: `url(${project.image})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'top',
-                      position: 'relative',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'rgba(0,0,0,0.3)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      opacity: 0,
+                      transition: 'opacity 0.3s ease',
+                    }}
+                    className='project-overlay'
+                  >
+                    <span style={{ color: 'white', fontSize: '1.1rem', fontWeight: '600' }}>View Details</span>
+                  </div>
+                </div>
+
+                {/* Project Content */}
+                <div style={{ padding: '2rem' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      marginBottom: '1rem',
                     }}
                   >
-                    <div
+                    <span
                       style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        background: 'rgba(0,0,0,0.3)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        opacity: 0,
-                        transition: 'opacity 0.3s ease',
+                        background: 'var(--accent-blue)',
+                        color: 'white',
+                        padding: '0.25rem 0.75rem',
+                        borderRadius: '15px',
+                        fontSize: '0.8rem',
+                        fontWeight: '500',
                       }}
-                      className='project-overlay'
                     >
-                      <span style={{ color: 'white', fontSize: '1.1rem', fontWeight: '600' }}>View Details</span>
-                    </div>
+                      {project.category}
+                    </span>
                   </div>
 
-                  {/* Project Content */}
-                  <div style={{ padding: '2rem' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem',
-                        marginBottom: '1rem',
-                      }}
-                    >
-                      <span
+                  <h3
+                    style={{
+                      fontSize: '1.5rem',
+                      fontWeight: '600',
+                      marginBottom: '0.5rem',
+                      color: 'var(--primary-text)',
+                    }}
+                  >
+                    {project.title}
+                  </h3>
+
+                  <p
+                    style={{
+                      color: 'var(--muted-text)',
+                      marginBottom: '1.5rem',
+                      lineHeight: '1.6',
+                    }}
+                  >
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: '0.75rem',
+                      marginBottom: '1.5rem',
+                    }}
+                  >
+                    {project.tech.map((TechIcon: any, index) => (
+                      <TechIcon
+                        key={index}
                         style={{
-                          background: 'var(--accent-blue)',
-                          color: 'white',
-                          padding: '0.25rem 0.75rem',
-                          borderRadius: '15px',
-                          fontSize: '0.8rem',
-                          fontWeight: '500',
+                          fontSize: '1.5rem',
+                          color: 'var(--accent-green)',
+                          transition: 'transform 0.3s ease',
                         }}
-                      >
-                        {project.category}
-                      </span>
-                    </div>
-
-                    <h3
-                      style={{
-                        fontSize: '1.5rem',
-                        fontWeight: '600',
-                        marginBottom: '0.5rem',
-                        color: 'var(--primary-text)',
-                      }}
-                    >
-                      {project.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        color: 'var(--muted-text)',
-                        marginBottom: '1.5rem',
-                        lineHeight: '1.6',
-                      }}
-                    >
-                      {project.description}
-                    </p>
-
-                    {/* Tech Stack */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        gap: '0.75rem',
-                        marginBottom: '1.5rem',
-                      }}
-                    >
-                      {project.tech.map((TechIcon: any, index) => (
-                        <TechIcon
-                          key={index}
-                          style={{
-                            fontSize: '1.5rem',
-                            color: 'var(--accent-green)',
-                            transition: 'transform 0.3s ease',
-                          }}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Project Links */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        gap: '1rem',
-                        borderTop: project.github || project.live ? '1px solid #000' : '0',
-                        paddingTop: 21,
-                      }}
-                    >
-                      {project.github && (
-                        <motion.a
-                          href={project.github}
-                          target='_blank'
-                          whileHover={{ scale: 1.1 }}
-                          style={{
-                            color: 'var(--secondary-text)',
-                            fontSize: '1.2rem',
-                            transition: 'color 0.3s ease',
-                          }}
-                          onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
-                          onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--secondary-text)')}
-                        >
-                          <FaGithub />
-                        </motion.a>
-                      )}
-                      {project.live && (
-                        <motion.a
-                          whileHover={{ scale: 1.1 }}
-                          style={{
-                            color: 'var(--secondary-text)',
-                            fontSize: '1.2rem',
-                            transition: 'color 0.3s ease',
-                          }}
-                          href={project.live}
-                          target='_blank'
-                        >
-                          <FaExternalLinkAlt />
-                        </motion.a>
-                      )}
-                    </div>
+                      />
+                    ))}
                   </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+
+                  {/* Project Links */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      gap: '1rem',
+                      borderTop: project.github || project.live ? '1px solid #000' : '0',
+                      paddingTop: 21,
+                    }}
+                  >
+                    {project.github && (
+                      <motion.a
+                        href={project.github}
+                        target='_blank'
+                        whileHover={{ scale: 1.1 }}
+                        style={{
+                          color: 'var(--secondary-text)',
+                          fontSize: '1.2rem',
+                          transition: 'color 0.3s ease',
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent-blue)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--secondary-text)')}
+                      >
+                        <FaGithub />
+                      </motion.a>
+                    )}
+                    {project.live && (
+                      <motion.a
+                        whileHover={{ scale: 1.1 }}
+                        style={{
+                          color: 'var(--secondary-text)',
+                          fontSize: '1.2rem',
+                          transition: 'color 0.3s ease',
+                        }}
+                        href={project.live}
+                        target='_blank'
+                      >
+                        <FaExternalLinkAlt />
+                      </motion.a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
       </div>
